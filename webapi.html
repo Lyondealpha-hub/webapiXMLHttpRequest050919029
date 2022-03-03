@@ -1,0 +1,77 @@
+<html lang="en" dir="ltr">
+    <head>
+        <title>AJAX COURSE</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="full_page">
+            <div class="form_template">
+                <form action="form.html">
+                     <ul>
+                        <li>
+                             <label for="">Name</label>
+                             <input id="name" type="text" name="name" placeholder="Name">
+                                    
+                        </li> <br>
+                        <li>
+                            <label for="">Contact</label>
+                            <input id="contact" type="number" name="contact" placeholder="Tel number">
+                                    
+                        </li>
+                        <br>
+                        <li>
+                            <label for="">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="Male">Male </option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </li>
+                        <br />
+                        <li>
+                            <label for="">ID Number</label>
+                            <input id="id" type="text" name="id" placeholder="ID Number">
+                        </li>
+                        <br />
+                        <li>
+                            <label for="">Address</label>
+                            <input id="ad" type="text" name="ad" placeholder="Address">
+                                    
+                        </li>
+                        <br />
+                        <button id="btn" type="submit">  Submit Form</button>
+                     </ul>
+                </form>
+
+                
+            </div>
+
+        </div>
+
+        <script>
+            const submitbtn = document.getElementById('btn');
+            const formdata = {
+                    name: document.getElementById('name'),
+                    contact: document.getElementById('contact'),
+                    id: document.getElementById('id'),
+                    ad: document.getElementById('ad'),
+                    gender: document.getElementById('gender'),
+
+                }
+            const sendData = ()=>{  
+                const request = new XMLHttpRequest();
+
+                request.open('POST', 'form.html',true);
+                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                requestData = `name=${formdata.name.value}&contact=${formdata.contact.value}&gender=${formdata.gender.value}&id=${formdata.id.value}&ad=${formdata.ad.value}`;
+
+                request.send(requestData);
+                
+            }
+
+            submitbtn.addEventListener('submit',sendData)
+            
+        </script>
+
+    </body>
+</html>
